@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@550&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,242;1,200&display=swap');
+*{
+       
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight:lighter;
+    box-sizing: border-box;
+}
+
+body{
+     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('https://c4.wallpaperflare.com/wallpaper/765/992/4/road-in-black-and-white-wallpaper-preview.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+    color: white; 
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+}
+
+.title{
+    /* color:#c8b6ff; */
+    color: #B8D0EB;
+    font-weight:bold;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    width: 100%;
+}
+.navbar{
+    padding: 0;
+    width: 100%;
+    min-height: 3.5rem;
+   
+}
+.home h3{
+    font-size: 2.5rem;
+    color:#B8F2E6;
+}
+.home h3 span{
+    color:#B8F2E6;
+    font-size: 2.5rem;
+}
+.home h5 span{
+    /*color:#ffafcc;*/
+    color: #087E8B;
+    font-size: 2rem;
+    font-weight: bold;
+}
+h1{
+    color:#ffafcc;
+}
+.nav-item span{
+    color:#ffc8dd;
+    /* font-size: large; */
+}
+.indi-blog{
+    width: max-content;
+    margin-top: 0.1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.mob-res{
+    display: inline;
+}
+.indi-blog:hover{
+    box-shadow: 0 2px 8px  rgb(214, 206, 206);
+    
+}
+.indi-blog a{
+    text-decoration: none;
+    color:#3a9fa8;
+    opacity: 2;
+}
+.comment,.posttitle{
+    text-decoration: none;
+    color:#31b897;
+    opacity: 2;
+}
+.comment,.posttitle:hover{
+    text-decoration: none;
+    color:#31b897;
+    opacity: 2;
+}
+
+.blogcont{
+    font-family: 'Karla', sans-serif;
+
+}
+#home{
+    text-decoration: none;
+    color: white;
+}
+@media only screen and (max-width: 700px)
+{
+    .blogcont{
+        font-family: 'Karla', sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+    }
+    .head1{
+        display: flex;
+        flex-direction: column;
+    }
+    .titlemedia,.welcome{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .detbody{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .sec1{
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<ul>
+{% if user.is_authenticated %}
+<h3>{{user.username}}</h3>
+{% endif %}
+{% for post in object_list %}
+    
+    {% if user.is_authenticated %}
+    
+        {% if user.id == post.author.id %}
+        <li>
+        <a class="posttitle"href="{% url 'blogdetails' post.author.username post.pk %}">{{ post.title }}</a> - {{ post.post_date }}  
+            <a href="{% url 'updatepost' post.pk %}" class="btn btn-dark">Edit Post</a> -
+            <a href="{% url 'deletepost' post.pk %}" class="btn btn-dark">Delete Post</a>
+
+            <br/>
+        </li>
+        {% endif %}
+    
+    {% endif %}
+
+{% endfor %}
+</ul> 
+
+{% endblock %}
