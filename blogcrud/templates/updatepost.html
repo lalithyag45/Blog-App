@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Make and save chages to your Post{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h1>Update your Blog...</h1>
+
+        <br/><br/> 
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+            <button class="btn btn-dark">Update Blog</button>
+        </div>       
+        <br/>
+        
+        <a href="{% url 'homecrud' %}" class="btn btn-dark">HomePage</a>
+    {% else %}
+        <h1>Sorry!You cannot edit this content as you are not the owner</h1>
+    {% endif %}
+{% else %}
+    <h1>Please register yourself and login to edit the content here!!</h1>
+{% endif %}
+
+ 
+
+{% endblock %}

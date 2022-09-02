@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title_tag }}{% endblock %}
+
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    By : {{ post.author.username }}
+    - {{ post.post_date }} 
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            -<a href="{% url 'updatepost' post.pk %}">Edit Post</a> | <a href="{% url 'deletepost' post.pk %}">Delete Post</a> 
+        {% endif %}
+    {% endif %}
+    <hr>
+
+    {% if post.header_image %}
+    <br/>
+
+        <img src="{{ post.header_image.url }}" width="500">
+        
+    <br/><br/>
+    {% endif %}
+
+    <div class="detbody">{{ post.body|safe }}</div>
+    <hr>
+    <br/>
+    
+    <form action="{% url 'like_post' post.pk %}"
+    method="POST">
+        {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% if liked %}
+            <button type="submit" name="post_id" value
+            ="{{ post.id }}" class="btn btn-danger
+            btn-sm">Unlike</button> 
+        {% else %}
+            <button type="submit" name="post_id" value
+            ="{{ post.id }}" class="btn btn-primary
+            btn-sm">Like</button>
+        {% endif %}
+    {% else %}
+        <small><a class="nav-link" href="{% url 'login' %}">Login</a>login to Like</small>
+
+    {% endif %}
+        - {{total_likes}} Likes
+    </form>
+<br><br>
+
+    <h2>Comments</h2>
+    <br/>
+    {% if  not post.comments.all %}
+        No Comments Yet..
+        {% if user.is_authenticated %}
+        <a href="{% url 'addcomment' post.pk %}">ADD ONE</a>
+        {% endif %}
+    {% else %}
+    {% if user.is_authenticated %}
+    
+    <a href="{% url 'addcomment' post.pk %}" class="btn btn-dark">COMMENT</a>
+    {% endif %}
+    <br/><br/>
+            {% for comment in post.comments.all %}
+                <strong>
+                    {{comment.name}} -
+                    {{comment.date_added}}
+                </strong>
+                <br/>
+                {{comment.comment}}  
+                <br/>  
+            {% endfor %}    
+    {% endif %}
+    <br/>
+    
+    
+    <a href="{% url 'homecrud' %}" class="btn btn-dark">HomePage</a>
+
+{% endblock %}

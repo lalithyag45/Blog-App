@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete your Post{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h1>Delete your Blog...</h1>
+        <br/><br/>
+        <h3>Delete : {{ post.title }}</h3>
+        <br/>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <strong>Are You Sure You want to delete?</strong>
+                <br/>
+                <br/>
+                <button class="btn btn-dark">Delete Post</button>
+
+        </div>   
+    {% else %}
+        <h1>Sorry!You cannot edit this content as you are not the owner</h1>
+    {% endif %}    
+    <br/>
+    <a href="{% url 'homecrud' %}" class="btn btn-dark">HomePage</a>
+{% else %}
+    <h1>Please login to delete the content here!!</h1>
+{% endif %}
+
+ 
+
+{% endblock %}

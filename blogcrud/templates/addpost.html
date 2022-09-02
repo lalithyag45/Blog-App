@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Share your Experience{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1>Add Post...</h1>
+
+    <br/><br/>
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+        <button class="btn btn-dark">Add Blog</button>
+    </div>  
+    
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("elder").value= name;
+    </script>
+    <br/>
+    <a href="{% url 'homecrud' %}" class="btn btn-dark">HomePage</a>
+    {% else %}
+    <h1>Please register yourself and login to add the content here!!</h1>
+{% endif %}
+
+ 
+
+{% endblock %}

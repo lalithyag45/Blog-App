@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<div class="titlemedia">
+  <h1 class="title">Latest Travel Blogs</h1>
+</div>
+<div class="home">
+  <ul>
+    {% if user.is_authenticated %}
+    <div class="welcome">
+      <h3>Welcome <span>{{user.username}}</span></h3>
+    </div>
+
+    <br>
+    {% endif %} 
+    {% for post in object_list %}
+    <div class="sec1">
+      <li class="indi-blog">
+        <div class="head1">
+          <h5 class="mob-res"><span>{{ post.title }}</span></h5>
+          - {{ post.post_date }}
+        </div>
+        <div class="blogcont">{{ post.body|slice:":100"|safe }}....<a
+            href="{% url 'blogdetails' post.author.username post.pk %}">Read more</a></div>
+
+      </li>
+    </div>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
