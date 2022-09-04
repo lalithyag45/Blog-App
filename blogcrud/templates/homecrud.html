@@ -19,7 +19,7 @@
           - {{ post.post_date }}
         </div>
         <div class="blogcont">{{ post.body|slice:":100"|safe }}....<a
-            href="{% url 'blogdetails' post.author.username post.pk %}">Read more</a></div>
+            href="{% url 'blogdetails' post.author.username post.pk %}"> Read more</a></div>
 
       </li>
     </div>
